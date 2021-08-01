@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <application/>
+ 	<navigation-rule>
+ 		<from-view-id>/Views/alta_administracion/alta_administracion.xhtml</from-view-id>
+ 		<navigation-case>
+ 			<from-outcome>alta_contenido</from-outcome>
+ 			<to-view-id>/Views/alta_contenido/alta_contenido.xhtml</to-view-id>
+ 		</navigation-case>
+ 		<navigation-case>
+ 			<from-outcome>anadir_contenido</from-outcome>
+ 			<to-view-id>/Views/alta_contenido/anadir_contenido.xhtml</to-view-id>
+ 		</navigation-case>
+ 	</navigation-rule>
+ 	
+ 	<navigation-rule>
+ 		<from-view-id>/Views/usuarios/usuarios.xhtml</from-view-id>
+ 		<navigation-case>
+ 			<from-outcome>usuarios</from-outcome>
+ 			<to-view-id>/Views/usuarios/usuarios.xhtml</to-view-id>
+ 		</navigation-case>
+ 		<navigation-case>
+ 			<from-outcome>anadir_usuarios</from-outcome>
+ 			<to-view-id>/Views/usuarios/anadir_usuarios.xhtml</to-view-id>
+ 		</navigation-case>
+ 	</navigation-rule>
+ 	
+ 	<navigation-rule>
+ 		<from-view-id>/Views/administracion/administracion.xhtml</from-view-id>
+ 		<navigation-case>
+ 			<from-outcome>administracion</from-outcome>
+ 			<to-view-id>/Views/administracion/administracion.xhtml</to-view-id>
+ 		</navigation-case>
+ 		<navigation-case>
+ 			<from-outcome>anadir_administradores</from-outcome>
+ 			<to-view-id>/Views/administracion/anadir_administradores.xhtml</to-view-id>
+ 		</navigation-case>
+ 	</navigation-rule>
+ 	
+ 	<navigation-rule>
+ 		<from-view-id>/Views/proveedores/proveedores.xhtml</from-view-id>
+ 		<navigation-case>
+ 			<from-outcome>proveedores</from-outcome>
+ 			<to-view-id>/Views/proveedores/proveedores.xhtml</to-view-id>
+ 		</navigation-case>
+ 		<navigation-case>
+ 			<from-outcome>anadir_proveedores</from-outcome>
+ 			<to-view-id>/Views/proveedores/anadir_proveedores.xhtml</to-view-id>
+ 		</navigation-case>
+ 	</navigation-rule>
+ 	
+ 	<navigation-rule>
+ 		<from-view-id>/Views/suministracion/suministracion.xhtml</from-view-id>
+ 		<navigation-case>
+ 			<from-outcome>suministracion</from-outcome>
+ 			<to-view-id>/Views/suministracion/suministracion.xhtml</to-view-id>
+ 		</navigation-case>
+ 		<navigation-case>
+ 			<from-outcome>anadir_suministraciones</from-outcome>
+ 			<to-view-id>/Views/suministracion/anadir_suministraciones.xhtml</to-view-id>
+ 		</navigation-case>
+ 	</navigation-rule>
+
+</faces-config>

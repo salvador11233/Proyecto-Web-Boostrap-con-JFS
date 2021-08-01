@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Usuarios</title>
+  <link rel="shortcut icon" type="image/png" href="../../../images/icon.png"/> 
+  <!-- Bootstrap core CSS-->
+  <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Page level plugin CSS-->
+  <link href="../../assets/css/dataTables.bootstrap4.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="../../assets/css/sb-admin.css" rel="stylesheet" />
+  <!-- Estilo de boton de archivo-->
+  <link href="../../assets/css/file.css" rel="stylesheet" />
+</h:head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav style="background: #2196F3;" class="navbar navbar-expand-lg navbar-dark  fixed-top" id="mainNav">
+    <a class="navbar-brand" href="../alta_contenido/alta_contenido.xhtml">FunkoMania</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style="background: #2196F3;">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Alta de contenido">
+          <a style="color: #fff;" class="nav-link" href="../alta_contenido/alta_contenido.xhtml">
+            <i class="fab fa-jedi-order"></i>
+            <span class="nav-link-text">Alta de contenido</span>
+          </a>
+        </li>
+                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Usuarios">
+          <a style="color: #fff;" class="nav-link" href="usuarios.xhtml">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Usuarios</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Administración">
+          <a style="color: #fff;" class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdministracion" data-parent="#exampleAccordion">
+            <i class="fas fa-address-card"></i>
+            <span class="nav-link-text">Administración</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseAdministracion">
+            <li>
+              <a href="../administracion/administracion.xhtml">Adminimistradores</a>
+            </li>
+            <li>
+              <a href="../compras/compras.xhtml">Compras Finalizadas</a>
+            </li>
+            <li>
+              <a href="../movimientos/movimientos.xhtml">Movimientos Realizados</a>
+            </li>
+            <li>
+              <a href="../proveedores/proveedores.xhtml">Proveedores</a>
+            </li>
+            <li>
+              <a href="../suministracion/suministracion.xhtml">Suministros</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color: white;" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#modalSalir">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;Salir</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+ <h:form>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">FunkoMania</a>
+        </li>
+        <li class="breadcrumb-item active">Usuarios</li>
+      </ol>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Tabla de usuarios&nbsp;&nbsp;&nbsp;
+          <h:commandLink action="anadir_usuarios" value="Agregar" class="btn btn-simple btn-sm" style="background: #2196F3; color: #fff;"/>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+          
+            <h:dataTable value="#{usuarioBO.usuarios}" var="usuario"
+						class="table table-bordered"  width="100%" cellspacing="0">
+						<h:column>
+							<f:facet name="header">Id</f:facet>
+							#{usuario.id_usuario}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nombre</f:facet>
+							#{usuario.nombre}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Apellidos</f:facet>
+							#{usuario.ap}&nbsp;#{usuario.am}
+            			</h:column>
+            			<h:column>
+            				<f:facet name="header">Email</f:facet>    				
+            				#{usuario.email}
+            			</h:column>
+            			<h:column>
+               				<f:facet name="header">Acción</f:facet>    				
+							<h:commandButton action="#{usuarioBO.edit(usuario.id_usuario)}"
+								value="Editar" class="btn btn-primary btn-sm" />
+								&nbsp;&nbsp;
+							<h:commandButton action="#{usuarioBO.eliminar(usuario.id_usuario)}"
+								value="Eliminar" class="btn btn-danger btn-sm" />
+						</h:column>
+					</h:dataTable>
+            
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </h:form>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright ©FunkoMania 2020</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+  <div class="modal fade" id="modalSalir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Estas seguro de salir?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Si seleccionas "Salir" vas ha cerrar sesión.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="../index.xhtml">Salir</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="../../assets/fontawesome/js/all.js" type="text/javascript"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="../js/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="../js/jquery.dataTables.js"></script>
+    <script src="../js/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="../js/sb-admin-datatables.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('#tabla_usu').DataTable({
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "zeroRecords": "Lo siento no se encontraron :( registros",
+            "info": "Mostrar pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No se encontraron registros",
+            "search":"Buscar",
+            "previous":"Antes",
+            "paginate": {
+              "first":    "Primero",
+              "last":    "Último",
+              "next":    "Siguiente",
+              "previous": "Anterior"
+            },
+            "infoFiltered": "(filtrando de _MAX_ total registros)"
+          }
+        });
+      });
+    </script>
+</body>
+</html>
